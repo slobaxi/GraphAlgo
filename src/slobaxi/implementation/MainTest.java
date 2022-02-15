@@ -1,3 +1,4 @@
+package slobaxi.implementation;
 
 public class MainTest {
 	
@@ -7,7 +8,9 @@ public class MainTest {
 		g.addVertex(2);
 		g.addVertex(3);
 		g.addEdge(1,2);
-		System.out.println(g);		
+		System.out.println(g);
+		AdjacencyMatrix am = new AdjacencyMatrix(g);
+		System.out.println(am);
 	}
 
 }

@@ -1,3 +1,5 @@
+package slobaxi.implementation;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -7,29 +9,40 @@ public class Graph<T> {
 	
 	//vertex with it's list of neighbours 
 	private Map<T,List<T>> map = new HashMap<>();
-	private boolean directed=false;
+	private boolean directed;
 	
-		
+	//Constructors
+	public Graph() {
+		this.directed=false;
+	}
+	
+	public Graph(boolean directed) {
+		this.directed=directed;
+	}
+	
+	//Basic methods for every Graph	
 	public void addVertex(T vertex) {
 		map.put(vertex, new LinkedList<T>());
 	}
-	public void addEdge(T source,T destination) {
+	public boolean addEdge(T source,T destination) {
 		
 		if (!map.containsKey(source))   
 			addVertex(source); 
 		
 		if (!map.containsKey(destination))   
 			addVertex(destination);  
-		
+		if(map.get(source).contains(destination)) {
+			return false;
+		}
 		map.get(source).add(destination); 
-		if (directed)   
+		if (!directed)   
 			map.get(destination).add(source);    
+		return true;
 	}
-	
+		
 	public int countVertices() {
 		return map.keySet().size();
 	}
-	
 	public int countEdges() {
 		int sum=0;
 		for(List<T> edges :map.values()) {
@@ -37,6 +50,21 @@ public class Graph<T> {
 		}
 		return directed ? sum:sum/2;
 	}
+	public boolean containsEdge(T vertex1,T vertex2) {	
+		if(map.get(vertex1).contains(vertex2)) {
+			return true;
+		}
+		return false;		
+	}
+	//Something like getters 
+	public Collection<T> getVertices() {
+		return map.keySet();
+	}
+	public boolean isDirected() {
+		return directed;
+	}
+	
+	//toString
 	@Override
 	public String toString() {   
 		StringBuilder vertex = new StringBuilder("Vertices: ");   
