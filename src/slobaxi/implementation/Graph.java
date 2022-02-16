@@ -56,6 +56,10 @@ public class Graph<T> {
 		}
 		return false;		
 	}
+	
+	public Collection<T> getNeighbours(T vertex) {
+		return map.get(vertex);
+	}
 	//Something like getters 
 	public Collection<T> getVertices() {
 		return map.keySet();

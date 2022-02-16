@@ -1,5 +1,7 @@
 package slobaxi.implementation;
 
+import slobaxi.algorihms.DepthFirstSearch;
+
 public class MainTest {
 	
 	public static void main(String args[]) {
@@ -7,7 +9,14 @@ public class MainTest {
 		g.addVertex(1);
 		g.addVertex(2);
 		g.addVertex(3);
+		g.addVertex(4);
+		g.addVertex(5);
 		g.addEdge(1,2);
+		g.addEdge(1,3);
+		g.addEdge(4, 5);
+		g.addEdge(4, 3);
+		g.addEdge(5, 3);
+		System.out.println(DepthFirstSearch.dfs(g, 5, 1));
 		System.out.println(g);
 		AdjacencyMatrix am = new AdjacencyMatrix(g);
 		System.out.println(am);
