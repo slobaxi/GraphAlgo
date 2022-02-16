@@ -1,5 +1,6 @@
 package slobaxi.implementation;
 
+import slobaxi.algorihms.BreadthFirstSearch;
 import slobaxi.algorihms.DepthFirstSearch;
 
 public class MainTest {
@@ -19,7 +20,8 @@ public class MainTest {
 		System.out.println(DepthFirstSearch.dfs(g, 5, 1));
 		System.out.println(g);
 		AdjacencyMatrix am = new AdjacencyMatrix(g);
-		System.out.println(am);
+		System.out.println(am);		
+		System.out.println(BreadthFirstSearch.bfs(g, 5, 1));
 	}
 
 }
